@@ -21,7 +21,10 @@ namespace ContactList
     public partial class ContactSplash : Window
     {
         private DispatcherTimer timer = null;
-        
+
+        /// <summary>
+        /// Initializes GUI, Instantiates a new instance of DispatchTimer and configures it's tick delay.
+        /// </summary>
         public ContactSplash()
         {
             InitializeComponent();
@@ -30,23 +33,29 @@ namespace ContactList
             timer.Tick += timerTick;
         }
 
+        /// <summary>
+        /// Instantiates a new instance of ContactWindow and displays it to the user. The timer is then stopped and the ContactSplash is closed.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void timerTick(Object sender, EventArgs e)
         {
             ContactWindow main = new ContactWindow();
 
             main.Show();
-                timer.Stop();
+            timer.Stop();
             this.Close();
         }
 
+        /// <summary>
+        /// Starts the DispatcherTimer upon loading of this Window.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             timer.Start();
         }
 
-       
-        
-
-        
     }//closes class
 }
